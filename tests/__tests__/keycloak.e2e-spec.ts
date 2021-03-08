@@ -10,7 +10,7 @@ chromeCapabilities
   //.set('acceptInsecureCerts', true)
   //.set("chrome.switches", ["--ignore-certificate-errors"]);
   //.set('platform', 'linux')
-  //.set('whitelistedIps', '')
+  .set('pageLoadStrategy', 'none')
   .set('goog:chromeOptions', {
     args: [
     '--disable-gpu',
@@ -22,6 +22,7 @@ chromeCapabilities
     '--no-proxy-server',
     "--proxy-server='direct://'",
     '--proxy-bypass-list=*',
+    '--no-sandbox'
     // '--allow-insecure-localhost',
     // '--ignore-certificate-errors',
     // '--allow-running-insecure-content',
