@@ -5,7 +5,7 @@ ENV UID 1000
 ##RUN apt install bash
 RUN apk add bash
 
-USER ${UID}
+USER 0
 
 RUN mkdir -p /home/node/app
 
