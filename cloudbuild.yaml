@@ -8,5 +8,5 @@ steps:
     args: ['-f', 'docker-compose.prod.yaml', 'up', 'dockerize']
 
   - id: 'Rodando tests'
-    name: 'docker'
-    args: ['exec', '-t', 'test', 'npm', 'test']
+    name: 'docker/compose'
+    args: ['exec', 'test', 'npm', 'test']
