@@ -1,6 +1,7 @@
-FROM node:12.14.0
+FROM node:12.14.0-alpine
 
-RUN apt install bash
+##RUN apt install bash
+RUN apk add bash
 
 USER node
 
