@@ -9,4 +9,4 @@ steps:
 
   - id: 'Rodando tests'
     name: 'docker/compose'
-    args: ['exec', '-T', 'test', 'bash', '-c','npm', 'run', 'test']
+    args: ['exec', '-T', 'test', 'bash', '-c','npm', 'test']
