@@ -1,9 +1,9 @@
-FROM node:12.14.0-alpine
+FROM node:12.14.0
 
 ARG UID=1000
 
-##RUN apt install bash
-RUN apk add bash
+RUN apt install bash
+#RUN apk add bash
 
 USER ${UID}
 
