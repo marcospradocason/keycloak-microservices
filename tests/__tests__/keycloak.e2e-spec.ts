@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 const chromeCapabilities = Capabilities.chrome();
 chromeCapabilities
   .set('acceptInsecureCerts', true)
+  .set('platform', 'linux')
   .set('chromeOptions', {
   'args': [
     '--disable-gpu',
