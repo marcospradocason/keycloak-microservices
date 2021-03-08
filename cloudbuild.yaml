@@ -6,7 +6,7 @@ steps:
       - "UID=1"
   - id: 'logs'
     name: 'docker/compose'
-    args: ['logs', 'test']
+    args: ['logs','-f', 'test']
 
   # - id: 'Rodando docker-compose'
   #   name: 'docker/compose'
