@@ -19,6 +19,8 @@ services:
       - ./keycloak/test-realm-export.json:/tmp/test-realm-export.json
     ports:
       - 8080:8080
+    depends_on:
+      - test
   
   test:
     build: ./tests
