@@ -15,7 +15,7 @@ services:
       - KEYCLOAK_PASSWORD=admin
       #- KEYCLOAK_DEFAULT_THEME=codeflix
       - KEYCLOAK_IMPORT=/tmp/test-realm-export.json
-      - "UID=${UID}"
+      - UID=0
     volumes:
       - ./keycloak/test-realm-export.json:/tmp/test-realm-export.json
     ports:
