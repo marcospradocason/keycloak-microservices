@@ -85,6 +85,7 @@ describe("validate themes", () => {
         "confidential-port": 0
       });
       const loginUrl = keycloak.loginUrl(uuidv4(), 'http://localhost:8000');
+      console.log(loginUrl);
       await driver.get(loginUrl);
       await driver.sleep(2000);
       await driver.wait(until.elementLocated({xpath: "//span[text()='Log In']"}), 5000);

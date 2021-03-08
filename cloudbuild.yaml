@@ -1,32 +1,32 @@
 steps:
-  # - id: 'Rodando docker-compose'
-  #   name: 'docker/compose'
-  #   args: ['-f', 'docker-compose.prod.yaml', 'up', '-d', 'test']
-  #   env:
-  #     - UID=0
-  
-  # - id: 'whoami'
-  #   name: 'docker/compose'
-  #   args: ['exec', '-T', 'test', 'whoami']
-
-  # - id: 'logs'
-  #   name: 'docker/compose'
-  #   args: ['logs','-f', 'test']
-
   - id: 'Rodando docker-compose'
     name: 'docker/compose'
-    args: ['-f', 'docker-compose.prod.yaml', 'up', '-d', 'app', 'selenium', 'test']
+    args: ['-f', 'docker-compose.prod.yaml', 'up', '-d', 'test']
     env:
       - UID=0
-
-  - id: 'Waiting keycloak'
+  
+  - id: 'npm run test'
     name: 'docker/compose'
-    args: ['-f', 'docker-compose.prod.yaml', 'up', 'dockerize']
+    args: ['exec', '-T', 'test', 'npm', 'test']
 
   - id: 'logs'
     name: 'docker/compose'
-    args: ['logs', 'test']
+    args: ['logs','-f', 'test']
 
-  - id: 'Rodando tests'
-    name: 'docker/compose'
-    args: ['exec', '-T', 'test', 'bash', '-c', 'npm test']
+  # - id: 'Rodando docker-compose'
+  #   name: 'docker/compose'
+  #   args: ['-f', 'docker-compose.prod.yaml', 'up', '-d', 'app', 'selenium', 'test']
+  #   env:
+  #     - UID=0
+
+  # - id: 'Waiting keycloak'
+  #   name: 'docker/compose'
+  #   args: ['-f', 'docker-compose.prod.yaml', 'up', 'dockerize']
+
+  # - id: 'logs'
+  #   name: 'docker/compose'
+  #   args: ['logs', 'test']
+
+  # - id: 'Rodando tests'
+  #   name: 'docker/compose'
+  #   args: ['exec', '-T', 'test', 'bash', '-c', 'npm test']
