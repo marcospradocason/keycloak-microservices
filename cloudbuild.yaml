@@ -7,7 +7,7 @@ steps:
   
   - id: 'whoami'
     name: 'docker/compose'
-    args: ['exec', -T', 'test', 'whoami']
+    args: ['exec', '-T', 'test', 'whoami']
 
   - id: 'logs'
     name: 'docker/compose'
