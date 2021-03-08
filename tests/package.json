@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "preinstall": "npm install -g jest",
     "ts-node": "ts-node",
     "test": "jest --rootDir __tests__"
   },
