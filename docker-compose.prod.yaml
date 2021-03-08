@@ -7,8 +7,6 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.prod
-      args:
-        - UID=0
     container_name: micro-auth-app-prod
     entrypoint: /opt/jboss/tools/docker-entrypoint.sh
     command: -Dkeycloak.profile.feature.upload_scripts=enabled
@@ -25,7 +23,10 @@ services:
       - test
   
   test:
-    build: ./tests
+    build: 
+      context: ./tests
+      args:
+        - UID=${UID}
     entrypoint: ./.docker/entrypoint.sh
     container_name: micro-auth-test-prod
     volumes:

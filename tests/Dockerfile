@@ -7,6 +7,4 @@ RUN apk add bash
 
 USER ${UID}
 
-RUN mkdir -p /home/node/app
-
 WORKDIR /home/node/app
