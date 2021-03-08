@@ -7,6 +7,8 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.prod
+      args:
+        - UID=0
     container_name: micro-auth-app-prod
     entrypoint: /opt/jboss/tools/docker-entrypoint.sh
     command: -Dkeycloak.profile.feature.upload_scripts=enabled
@@ -15,7 +17,6 @@ services:
       - KEYCLOAK_PASSWORD=admin
       #- KEYCLOAK_DEFAULT_THEME=codeflix
       - KEYCLOAK_IMPORT=/tmp/test-realm-export.json
-      - UID=0
     volumes:
       - ./keycloak/test-realm-export.json:/tmp/test-realm-export.json
     ports:
