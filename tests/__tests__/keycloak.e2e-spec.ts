@@ -7,24 +7,29 @@ import { v4 as uuidv4 } from 'uuid';
 
 const chromeCapabilities = Capabilities.chrome();
 chromeCapabilities
-  .set('acceptInsecureCerts', true)
-  .set('platform', 'linux')
-  .set('chrome.switches', "--ignore-certificate-errors")
-  .set('chromeOptions', {
-  'args': [
+  //.set('acceptInsecureCerts', true)
+  //.set("chrome.switches", ["--ignore-certificate-errors"]);
+  //.set('platform', 'linux')
+  //.set('whitelistedIps', '')
+  .set('goog:chromeOptions', {
+    args: [
     '--disable-gpu',
     '--headless',
     '--window-size=800,600',
     '--enable-javascript',
     '--disable-extensions',
+    '--disable-dev-shm-usage',
     '--no-proxy-server',
     "--proxy-server='direct://'",
     '--proxy-bypass-list=*',
-    '--allow-insecure-localhost',
-    '--ignore-certificate-errors',
-    '--allow-running-insecure-content',
-    '--unsafely-treat-insecure-origin-as-secure',
-    "--ignore-ssl-errors=yes"
+    // '--allow-insecure-localhost',
+    // '--ignore-certificate-errors',
+    // '--allow-running-insecure-content',
+    // '--unsafely-treat-insecure-origin-as-secure',
+    // "--ignore-ssl-errors=yes",
+    // '--web-security=false',
+    // '--ssl-protocol=any'
+    //'--whitelisted-ips='
   ]
 });
 
@@ -32,17 +37,18 @@ const options = new Options();
 
 options
   // .addArguments('--no-sandbox')
-  .addArguments('--disable-dev-shm-usage')
+  // .addArguments('--disable-dev-shm-usage')
 
-  .addArguments("--disable-gpu")
+  // .addArguments("--disable-gpu")
   .addArguments("--headless")
-  .addArguments("--window-size=1920,1080")
-  .addArguments("--enable-javascript")
-  .addArguments("--no-proxy-server")
-  .addArguments("--proxy-server='direct://'")
-  .addArguments("--proxy-bypass-list=*")
+  // .addArguments("--window-size=1920,1080")
+  // .addArguments("--enable-javascript")
+  // .addArguments("--no-proxy-server")
+  // .addArguments("--proxy-server='direct://'")
+  // .addArguments("--proxy-bypass-list=*")
   .addArguments("--allow-insecure-localhost")
-  .addArguments("--ignore-certificate-errors");
+  .addArguments("--ignore-certificate-errors")
+  .addArguments('--whitelisted-ips=');
 
   
 //.setChromeBinaryPath(chromedriver.path)
@@ -60,6 +66,7 @@ describe("validate themes", () => {
     driver = await new Builder()
       .forBrowser("chrome")
       .withCapabilities(chromeCapabilities)
+      //.withCapabilities(options.)
       //.setChromeOptions(options)
       .usingServer("http://selenium:4444/wd/hub")
       .build();
@@ -80,7 +87,7 @@ describe("validate themes", () => {
       const keycloak = new Keycloak({store: memoryStore}, {
         realm: "test", 
         resource: "theme1", 
-        "auth-server-url": "http://app:8080/auth/",
+        "auth-server-url": "http://app.test:8080/auth/",
         "ssl-required": "external",
         "confidential-port": 0
       });

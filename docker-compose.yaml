@@ -27,6 +27,10 @@ services:
         # - ./themes/base:/opt/jboss/keycloak/themes/base
     depends_on: 
       - db
+    networks:
+      default:
+        aliases:
+          - app.test
 
   db:
     build: ./keycloak/.docker/mysql
@@ -41,6 +45,8 @@ services:
       - MYSQL_DATABASE=micro_atuh
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=root
+    networks:
+      - default
   
   frontend:
     build: ./frontend
@@ -48,6 +54,8 @@ services:
     container_name: micro-auth-frontend-test
     volumes:
       - ./frontend:/home/node/app
+    networks:
+      - default
   
   test:
     build: ./tests
@@ -55,6 +63,28 @@ services:
     container_name: micro-auth-test-test
     volumes:
       - ./tests:/home/node/app
+    networks:
+      - default
 
   selenium:
-    image: selenium/standalone-chrome
+    image: selenium/standalone-chrome:88.0.4324.150-chromedriver-88.0.4324.96
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
+  # selenium-hub:
+  #   image: selenium/hub
+  #   container_name: selenium-hub
+  #   ports:
+  #     - "4444:4444"
+  # chrome:
+  #   image: selenium/node-chrome:88.0.4324.150-chromedriver-88.0.4324.96
+  #   depends_on:
+  #     - selenium-hub
+  #   environment:
+  #     - HUB_HOST=selenium-hub
+  #     - HUB_PORT=4444
+    # volumes:
+    #   - "/dev/shm:/dev/shm"
