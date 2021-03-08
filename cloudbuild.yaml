@@ -7,6 +7,10 @@ steps:
     name: 'docker/compose'
     args: ['-f', 'docker-compose.prod.yaml', 'up', 'dockerize']
 
+  - id: 'ls'
+    name: 'docker/compose'
+    args: ['exec', '-T', 'test', 'ls', ' node_modules']
+
   - id: 'Rodando tests'
     name: 'docker/compose'
     args: ['exec', '-T', 'test', 'bash', '-c', 'npm test']
