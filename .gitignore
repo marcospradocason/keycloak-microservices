@@ -1,0 +1,4 @@
+keycloak/__themes/
+.history/
+keycloak/.docker/dbdata
+keycloak/theme

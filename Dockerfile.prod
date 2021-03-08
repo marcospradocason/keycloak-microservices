@@ -1,0 +1,17 @@
+FROM node:14.10.0-slim as frontend
+
+USER node
+
+RUN mkdir -p /home/node/app
+
+WORKDIR /home/node/app
+
+COPY --chown=node frontend .
+
+RUN npm install
+
+RUN npm run build
+
+FROM codeeducation/keycloak:11.0.2-fix-translate
+
+COPY --from=frontend /home/node/app/build/. /opt/jboss/keycloak/themes/

@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  app:
+    #image: codeeducation/keycloak:11.0.2-fix-translate
+    build: 
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: micro-auth-app-prod
+    entrypoint: /opt/jboss/tools/docker-entrypoint.sh
+    command: -Dkeycloak.profile.feature.upload_scripts=enabled
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      #- KEYCLOAK_DEFAULT_THEME=codeflix
+      - KEYCLOAK_IMPORT=/tmp/test-realm-export.json
+    volumes:
+      - ./keycloak/test-realm-export.json:/tmp/test-realm-export.json
+    ports:
+      - 8080:8080
+  
+  test:
+    build: ./tests
+    entrypoint: ./.docker/entrypoint.sh
+    container_name: micro-auth-test-prod
+    volumes:
+      - ./tests:/home/node/app
+    depends_on:
+      - selenium
+
+  selenium:
+    image: selenium/standalone-chrome
+    #ports:
+    #  - 4444:4444
+
+  dockerize:
+    image: jwilder/dockerize
+    entrypoint: dockerize -wait tcp://app:3306 -timeout 200s
