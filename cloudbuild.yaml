@@ -3,7 +3,7 @@ steps:
     name: 'docker/compose'
     args: ['-f', 'docker-compose.prod.yaml', 'up', '-d', 'test']
     env:
-      - "UID=1"
+      - "UID=0"
   - id: 'logs'
     name: 'docker/compose'
     args: ['logs','-f', 'test']
