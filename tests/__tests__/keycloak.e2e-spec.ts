@@ -46,12 +46,10 @@ describe("validate themes", () => {
       .setChromeOptions(options)
       .usingServer("http://selenium:4444/wd/hub")
       .build();
-    done();  
-  });
+  }, 10000);
   afterEach(async (done) => {
     await driver.quit();
-    done();
-  });
+  }, 10000);
 
   // test("validate codeflix theme", async () => {
   //     await driver.get("http://app:8080/auth/admin/codeflix-test/console/");
