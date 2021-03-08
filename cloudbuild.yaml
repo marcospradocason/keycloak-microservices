@@ -1,17 +1,17 @@
 steps:
   - id: 'Rodando docker-compose'
     name: 'docker/compose'
-    args: ['-f', 'docker-compose.prod.yaml', 'up', '-d', 'test']
+    args: ['-f', 'docker-compose.prod.yaml', 'up', 'test']
     env:
       - UID=0
   
-  - id: 'npm run test'
-    name: 'docker/compose'
-    args: ['exec', '-T', 'test', 'npm', 'test']
+  # - id: 'npm run test'
+  #   name: 'docker/compose'
+  #   args: ['exec', '-T', 'test', 'npm', 'test']
 
-  - id: 'logs'
-    name: 'docker/compose'
-    args: ['logs','-f', 'test']
+  # - id: 'logs'
+  #   name: 'docker/compose'
+  #   args: ['logs','-f', 'test']
 
   # - id: 'Rodando docker-compose'
   #   name: 'docker/compose'
