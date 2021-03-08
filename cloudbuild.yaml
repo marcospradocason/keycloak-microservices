@@ -4,6 +4,11 @@ steps:
     args: ['-f', 'docker-compose.prod.yaml', 'up', '-d', 'test']
     env:
       - "UID=0"
+  
+  - id: 'whoami'
+    name: 'docker/compose'
+    args: ['exec', -T', 'test', 'whoami']
+
   - id: 'logs'
     name: 'docker/compose'
     args: ['logs','-f', 'test']
