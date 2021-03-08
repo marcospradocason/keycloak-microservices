@@ -27,7 +27,8 @@ options
   .addArguments("--disable-gpu")
   .addArguments("--headless")
   .addArguments("--window-size=1920,1080")
-  .addArguments("--enable-javascript");
+  .addArguments("--enable-javascript")
+  .addArguments("--ignore-certificate-errors");
 //.setChromeBinaryPath(chromedriver.path)
 // .headless()
 // .addArguments('--whitelisted-ips')
