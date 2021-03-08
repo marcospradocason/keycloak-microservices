@@ -47,7 +47,7 @@ describe("validate themes", () => {
       .setChromeOptions(options)
       .usingServer("http://selenium:4444/wd/hub")
       .build();
-  }, 10000);
+  }, 20000);
   afterEach(async (done) => {
     await driver.quit();
   }, 10000);
