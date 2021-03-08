@@ -21,6 +21,10 @@ services:
       - 8080:8080
     depends_on:
       - test
+    networks:
+      default:
+        aliases:
+          - app.test
   
   test:
     build: 
@@ -33,12 +37,22 @@ services:
       - ./tests:/home/node/app
     depends_on:
       - selenium
+    networks:
+      - default
 
   selenium:
-    image: selenium/standalone-chrome
+    image: selenium/standalone-chrome:88.0.4324.150-chromedriver-88.0.4324.96
+    networks:
+      - default
     #ports:
     #  - 4444:4444
 
   dockerize:
     image: jwilder/dockerize
     entrypoint: dockerize -wait tcp://app:8080 -timeout 200s
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
