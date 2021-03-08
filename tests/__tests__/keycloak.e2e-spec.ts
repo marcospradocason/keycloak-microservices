@@ -9,6 +9,7 @@ const chromeCapabilities = Capabilities.chrome();
 chromeCapabilities
   .set('acceptInsecureCerts', true)
   .set('platform', 'linux')
+  .set('chrome.switches', "--ignore-certificate-errors")
   .set('chromeOptions', {
   'args': [
     '--disable-gpu',
@@ -21,7 +22,9 @@ chromeCapabilities
     '--proxy-bypass-list=*',
     '--allow-insecure-localhost',
     '--ignore-certificate-errors',
-    '--allow-running-insecure-content'
+    '--allow-running-insecure-content',
+    '--unsafely-treat-insecure-origin-as-secure',
+    "--ignore-ssl-errors=yes"
   ]
 });
 
