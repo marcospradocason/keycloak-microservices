@@ -20,8 +20,8 @@ chromeCapabilities
     '--disable-extensions',
     '--disable-dev-shm-usage',
     '--no-proxy-server',
-    "--proxy-server='direct://'",
-    '--proxy-bypass-list=*',
+    //"--proxy-server='direct://'",
+    //'--proxy-bypass-list=*',
     '--no-sandbox'
     // '--allow-insecure-localhost',
     // '--ignore-certificate-errors',
