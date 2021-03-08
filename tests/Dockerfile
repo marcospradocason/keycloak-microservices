@@ -5,6 +5,6 @@ ARG UID=1000
 ##RUN apt install bash
 RUN apk add bash
 
-USER $UID
+USER ${UID}:${UID}
 
 WORKDIR /home/node/app
