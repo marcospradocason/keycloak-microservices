@@ -1,18 +1,27 @@
 steps:
   - id: 'Rodando docker-compose'
     name: 'docker/compose'
-    args: ['-f', 'docker-compose.prod.yaml', 'up', '-d', 'app', 'selenium', 'test']
+    args: ['-f', 'docker-compose.prod.yaml', 'up', '-d', 'test']
     env:
       - "UID=1"
-
-  - id: 'Waiting keycloak'
-    name: 'docker/compose'
-    args: ['-f', 'docker-compose.prod.yaml', 'up', 'dockerize']
-
   - id: 'logs'
     name: 'docker/compose'
     args: ['logs', 'test']
 
-  - id: 'Rodando tests'
-    name: 'docker/compose'
-    args: ['exec', '-T', 'test', 'bash', '-c', 'npm test']
+  # - id: 'Rodando docker-compose'
+  #   name: 'docker/compose'
+  #   args: ['-f', 'docker-compose.prod.yaml', 'up', '-d', 'app', 'selenium', 'test']
+  #   env:
+  #     - "UID=1"
+
+  # - id: 'Waiting keycloak'
+  #   name: 'docker/compose'
+  #   args: ['-f', 'docker-compose.prod.yaml', 'up', 'dockerize']
+
+  # - id: 'logs'
+  #   name: 'docker/compose'
+  #   args: ['logs', 'test']
+
+  # - id: 'Rodando tests'
+  #   name: 'docker/compose'
+  #   args: ['exec', '-T', 'test', 'bash', '-c', 'npm test']

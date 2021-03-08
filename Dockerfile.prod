@@ -1,8 +1,8 @@
 FROM node:14.10.0-slim as frontend
 
-USER node
+# USER node
 
-RUN mkdir -p /home/node/app
+# RUN mkdir -p /home/node/app
 
 WORKDIR /home/node/app
 
