@@ -5,24 +5,29 @@ import * as session from 'express-session';
 import { v4 as uuidv4 } from 'uuid';
 //import * as chromedriver from "chromedriver";
 
-// const chromeCapabilities = Capabilities.chrome();
-// chromeCapabilities.set('chromeOptions', {
-//   binary: chromedriver.path,
-//   'args': [
-//     '--headless',
-//     '--window-size=800,600',
-//     '--disable-gpu',
-//     '--whitelisted-ips=',
-//     '--no-sandbox',
-//     '--disable-extensions'
-//   ]
-// });
+const chromeCapabilities = Capabilities.chrome();
+chromeCapabilities
+  .set('acceptInsecureCerts', true)
+  .set('chromeOptions', {
+  'args': [
+    '--disable-gpu',
+    '--headless',
+    '--window-size=800,600',
+    '--enable-javascript',
+    '--disable-extensions',
+    '--no-proxy-server',
+    "--proxy-server='direct://'",
+    '--proxy-bypass-list=*',
+    '--allow-insecure-localhost',
+    '--ignore-certificate-errors'
+  ]
+});
 
 const options = new Options();
 
 options
   // .addArguments('--no-sandbox')
-  //.addArguments('--disable-dev-shm-usage')
+  .addArguments('--disable-dev-shm-usage')
 
   .addArguments("--disable-gpu")
   .addArguments("--headless")
@@ -34,6 +39,7 @@ options
   .addArguments("--allow-insecure-localhost")
   .addArguments("--ignore-certificate-errors");
 
+  
 //.setChromeBinaryPath(chromedriver.path)
 // .headless()
 // .addArguments('--whitelisted-ips')
@@ -48,8 +54,8 @@ describe("validate themes", () => {
   beforeEach(async () => {
     driver = await new Builder()
       .forBrowser("chrome")
-      //.withCapabilities(chromeCapabilities)
-      .setChromeOptions(options)
+      .withCapabilities(chromeCapabilities)
+      //.setChromeOptions(options)
       .usingServer("http://selenium:4444/wd/hub")
       .build();
   })//, 20000);
