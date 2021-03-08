@@ -10,7 +10,7 @@ chromeCapabilities
   //.set('acceptInsecureCerts', true)
   //.set("chrome.switches", ["--ignore-certificate-errors"]);
   //.set('platform', 'linux')
-  .set('pageLoadStrategy', 'none')
+  //.set('pageLoadStrategy', 'none')
   .set('goog:chromeOptions', {
     args: [
     '--disable-gpu',
@@ -20,8 +20,8 @@ chromeCapabilities
     '--disable-extensions',
     '--disable-dev-shm-usage',
     '--no-proxy-server',
-    //"--proxy-server='direct://'",
-    //'--proxy-bypass-list=*',
+    "--proxy-server='direct://'",
+    '--proxy-bypass-list=*',
     '--no-sandbox'
     // '--allow-insecure-localhost',
     // '--ignore-certificate-errors',
