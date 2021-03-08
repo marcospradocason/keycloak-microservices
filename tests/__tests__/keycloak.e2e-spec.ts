@@ -29,6 +29,8 @@ options
   .addArguments("--window-size=1920,1080")
   .addArguments("--enable-javascript")
   .addArguments("--no-proxy-server")
+  .addArguments("--proxy-server='direct://'")
+  .addArguments("--proxy-bypass-list=*")
   .addArguments("--allow-insecure-localhost")
   .addArguments("--ignore-certificate-errors");
 
@@ -43,17 +45,17 @@ options
 
 describe("validate themes", () => {
   let driver: WebDriver;
-  beforeEach(async (done) => {
+  beforeEach(async () => {
     driver = await new Builder()
       .forBrowser("chrome")
       //.withCapabilities(chromeCapabilities)
       .setChromeOptions(options)
       .usingServer("http://selenium:4444/wd/hub")
       .build();
-  }, 20000);
-  afterEach(async (done) => {
+  })//, 20000);
+  afterEach(async () => {
     await driver.quit();
-  }, 10000);
+  })//, 10000);
 
   // test("validate codeflix theme", async () => {
   //     await driver.get("http://app:8080/auth/admin/codeflix-test/console/");
@@ -76,5 +78,5 @@ describe("validate themes", () => {
       await driver.sleep(2000);
       await driver.wait(until.elementLocated({xpath: "//span[text()='Log In']"}), 5000);
       await driver.wait(until.elementLocated({className: "MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"}));
-  }, 10000);
+  });//, 10000);
 });
