@@ -36,4 +36,4 @@ services:
 
   dockerize:
     image: jwilder/dockerize
-    entrypoint: dockerize -wait tcp://app:3306 -timeout 200s
+    entrypoint: dockerize -wait tcp://app:8080 -timeout 200s
