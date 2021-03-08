@@ -20,7 +20,8 @@ chromeCapabilities
     "--proxy-server='direct://'",
     '--proxy-bypass-list=*',
     '--allow-insecure-localhost',
-    '--ignore-certificate-errors'
+    '--ignore-certificate-errors',
+    '--allow-running-insecure-content'
   ]
 });
 
