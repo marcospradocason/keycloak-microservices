@@ -28,7 +28,11 @@ options
   .addArguments("--headless")
   .addArguments("--window-size=1920,1080")
   .addArguments("--enable-javascript")
+  .addArguments("--no-proxy-server")
+  .addArguments("--allow-insecure-localhost")
   .addArguments("--ignore-certificate-errors");
+
+options.setAcceptInsecureCerts(true);
 //.setChromeBinaryPath(chromedriver.path)
 // .headless()
 // .addArguments('--whitelisted-ips')
