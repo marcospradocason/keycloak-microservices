@@ -40,15 +40,16 @@ options
 describe("validate themes", () => {
   let driver: WebDriver;
   beforeEach(async () => {
-    driver = await new Builder()
+    return driver = await new Builder()
       .forBrowser("chrome")
       //.withCapabilities(chromeCapabilities)
       .setChromeOptions(options)
       .usingServer("http://selenium:4444/wd/hub")
       .build();
+      
   });
   afterEach(async () => {
-    await driver.quit();
+    return await driver.quit();
   });
 
   // test("validate codeflix theme", async () => {
